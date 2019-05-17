@@ -6,41 +6,34 @@
 //  Copyright © 2019 Bartosz Bilski. All rights reserved.
 //
 
-import Foundation
+//import Foundation
 import GameplayKit
 
-class Player: NSObject {
-    
-    enum Value: Int {
-        case empty = 0
-        case black
-        case white
-        
-        var name: String {
-            switch self {
-            case .empty:
-                return ""
-            case .black:
-                return "Black"
-            case .white:
-                return "White"
-            }
-        }
-    }
+enum StoneColor: Int {
+    case none = 0
+    case white
+    case black
+}
+
+class Player: NSObject, GKGameModelPlayer {
     
     // value and name needed for the init method 
-    var value: Value
+    var stone: StoneColor
+    var color: UIImage
     var name: String
+    
+    // Required by GKGameModelPlayer
+    var playerId: Int
     
     // Array with all players
     static var allPlayers = [
-    Player(.black),
-    Player(.white)
+    Player(stone: .white),
+    Player(stone: .black)
     ]
     
     // Return opposite player
     var opponent: Player {
-        if value == .black {
+        if stone == .white {
             return Player.allPlayers[1]
         } else {
             return Player.allPlayers[0]
@@ -48,8 +41,18 @@ class Player: NSObject {
     }
     
     // Init method
-    init(_ value: Value) {
-        self.value = value
-        name = value.name
+    init(stone: StoneColor) {
+        self.stone = stone
+        
+        self.playerId = stone.rawValue
+        
+        if stone == .white {
+            color = UIImage(named: "White")!
+            name = "White Stone"
+        } else {
+            color = UIImage(named: "Black")!
+            name = "Black Stone"
+        }
     }
 }
+

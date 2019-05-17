@@ -17,7 +17,7 @@ class Board: NSObject {
     var currentPlayer: Player = Player.allPlayers[0]
     
     // Initial board representation
-    fileprivate var values: [[Player.Value]] = [
+    fileprivate var values: [[Player.StoneColor]] = [
     [.empty, .empty, .empty, .empty, .empty, .empty, .empty, .empty],
     [.empty, .empty, .empty, .empty, .empty, .empty, .empty, .empty],
     [.empty, .empty, .empty, .empty, .empty, .empty, .empty, .empty],
@@ -29,7 +29,7 @@ class Board: NSObject {
     ]
     
     // Get and Set methods for the table values
-    subscript(x: Int, y: Int) -> Player.Value {
+    subscript(x: Int, y: Int) -> Player.StoneColor {
         get {
             return values[y][x]
         }
