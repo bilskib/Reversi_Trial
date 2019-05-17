@@ -17,7 +17,6 @@ enum StoneColor: Int {
 
 class Player: NSObject, GKGameModelPlayer {
     
-    // value and name needed for the init method 
     var stone: StoneColor
     var color: UIImage
     var name: String
@@ -44,6 +43,7 @@ class Player: NSObject, GKGameModelPlayer {
     init(stone: StoneColor) {
         self.stone = stone
         
+        // MARK: - GamePlayKit required properties
         self.playerId = stone.rawValue
         
         if stone == .white {

@@ -6,4 +6,27 @@
 //  Copyright © 2019 Bartosz Bilski. All rights reserved.
 //
 
-import Foundation
+import GameplayKit
+
+struct Strategist {
+    
+    private let strategist:
+        GKMinmaxStrategist = {
+        let strategist = GKMinmaxStrategist()
+            
+        return strategist
+    }()
+    
+    var board: Board {
+        didSet {
+            strategist.gameModel = board
+        }
+        
+    }
+    
+    func bestMoveForAI() -> Int? {
+        return nil
+    }
+    
+}
+ 
