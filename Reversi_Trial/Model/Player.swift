@@ -18,7 +18,8 @@ enum StoneColor: Int {
 class Player: NSObject, GKGameModelPlayer {
     
     var stone: StoneColor
-    var color: UIImage
+    var color: String
+    //var color: UIImage
     var name: String
     
     // Required by GKGameModelPlayer
@@ -47,10 +48,12 @@ class Player: NSObject, GKGameModelPlayer {
         self.playerId = stone.rawValue
         
         if stone == .white {
-            color = UIImage(named: "White")!
+            color = "w"
+            //color = UIImage(named: "White")!
             name = "White Stone"
         } else {
-            color = UIImage(named: "Black")!
+            color = "b"
+            //color = UIImage(named: "Black")!
             name = "Black Stone"
         }
     }
